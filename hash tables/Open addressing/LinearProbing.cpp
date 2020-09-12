@@ -25,6 +25,8 @@ public:
     void delete_item(int x);
     // Hash function for hashing the key
     int hash_function(int x);
+    // Search a value in table
+    void search(int x);
     // Display the contents of the table
     void display();
 };
@@ -35,7 +37,7 @@ Hash::Hash(int s)
     this->table = new int[BUCKET];
     for (int i = 0; i < BUCKET; i++)
     {
-        table[i] = NULL;
+        table[i] = -100;
     }
 }
 void Hash::insert_item(int key)
@@ -45,7 +47,7 @@ void Hash::insert_item(int key)
     {
         key = key + b;
         index = hash_function(key);
-        if (table[index] != NULL)
+        if (table[index] != -100)
         {
             ++b;
         }
@@ -63,7 +65,7 @@ void Hash::delete_item(int key)
     {
         key = key + b;
         index = hash_function(key);
-        if (table[index] == NULL)
+        if (table[index] == -100)
         {
             cout << "Value not present in table" << endl;
             break;
@@ -73,6 +75,7 @@ void Hash::delete_item(int key)
             if (table[index] == key)
             {
                 table[index] = -1;
+                break;
             }
             else
             {
@@ -85,8 +88,35 @@ int Hash::hash_function(int key)
 {
     return (key % BUCKET);
 }
+void Hash::search(int key)
+{
+    int b{0}, index;
+    while (1)
+    {
+        key = key + b;
+        index = hash_function(key);
+        if (table[index] == -100)
+        {
+            cout << "Value not present in table" << endl;
+            break;
+        }
+        else
+        {
+            if (table[index] == key)
+            {
+                cout << "Value present in table" << endl;
+                break;
+            }
+            else
+            {
+                ++b;
+            }
+        }
+    }
+}
 void Hash::display()
 {
+    cout << "NOTE: -1 indicates value is deleted and -100 indicates it is empty" << endl;
     for (int i = 0; i < BUCKET; i++)
     {
         cout << i << ": " << table[i] << endl;
@@ -96,19 +126,22 @@ void Hash::display()
 int main()
 {
     int N, v, c;
-    cout << "Enter the total number of elements: ";
+    cout << "Enter the table size: ";
     cin >> N;
 
     Hash h(7);
 
     while (1)
     {
+        cout << "--------------------------------" << endl;
         cout << "1.Insert element into the table" << endl;
         cout << "2.Delete element at a key" << endl;
-        cout << "3.Display table" << endl;
-        cout << "4.Exit" << endl;
+        cout << "3.Search element in the table" << endl;
+        cout << "4.Display table" << endl;
+        cout << "5.Exit" << endl;
         cout << "Enter your choice: ";
         cin >> c;
+        cout << "--------------------------------" << endl;
         switch (c)
         {
         case 1:
@@ -122,9 +155,14 @@ int main()
             h.delete_item(v);
             break;
         case 3:
-            h.display();
+            cout << "Enter key to search: ";
+            cin >> v;
+            h.search(v);
             break;
         case 4:
+            h.display();
+            break;
+        case 5:
             exit(1);
         default:
             cout << "\nEnter correct option\n";
