@@ -1,3 +1,4 @@
 ﻿# DS-CPlusPlus
  
- ## Algorithms
+ ## Algorithms in C++
+ 
