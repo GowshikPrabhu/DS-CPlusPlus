@@ -1,4 +1,6 @@
 ﻿# DS-CPlusPlus
  
- ## Algorithms in C++
+## DS
+* Array
+* Hash Tables
  
