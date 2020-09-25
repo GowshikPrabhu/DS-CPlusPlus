@@ -3,10 +3,10 @@
 * To insert a node into the hash table, we need to find the hash index for the given key. And it
 * could be calculated using the hash function. Use open addressing for collision.
 * In quadratic probing, we probe i^2th slot for next slot.
-* let hash(x) be the slot index computed using hash function.  
+* let hash(x) be the slot index computed using hash function.
 * If slot hash(x) % S is full, then we try (hash(x) + 1*1) % S
 * If (hash(x) + 1*1) % S is also full, then we try (hash(x) + 2*2) % S
-* If (hash(x) + 2*2) % S is also full, then we try (hash(x) + 3*3) % S 
+* If (hash(x) + 2*2) % S is also full, then we try (hash(x) + 3*3) % S
 */
 
 #include <bits/stdc++.h>
@@ -27,7 +27,7 @@ public:
     // Hash function for hashing the key
     int hash_function(int x);
     // Search a value in table
-    void search(int x);
+    void search_value(int x);
     // Display the contents of the table
     void display();
 };
@@ -99,7 +99,7 @@ int Hash::hash_function(int key)
 {
     return (key % BUCKET);
 }
-void Hash::search(int key)
+void Hash::search_value(int key)
 {
     int b{0}, index, value, initial_index;
     value = key;
@@ -171,7 +171,7 @@ int main()
         case 3:
             cout << "Enter key to search: ";
             cin >> v;
-            h.search(v);
+            h.search_value(v);
             break;
         case 4:
             h.display();
