@@ -1,6 +1,6 @@
 ﻿# DS-CPlusPlus
  
-## DS Algorithms
+## Algorithms
 * Array
 * Hash Tables
  
