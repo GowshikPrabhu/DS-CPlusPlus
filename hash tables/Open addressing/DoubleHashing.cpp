@@ -43,6 +43,7 @@ Hash::Hash(int s)
     {
         table[i] = -100;
     }
+    // To initialize prime number less than 2*BUCKET
 }
 void Hash::insert_item(int key)
 {
@@ -52,10 +53,10 @@ void Hash::insert_item(int key)
     index = initial_index;
     while (1)
     {
-        cout << "B: " << b << endl;
-        cout << "key: " << key << endl;
-        cout << "index: " << index << endl;
-        cout << endl;
+        // cout << "B: " << b << endl;
+        // cout << "key: " << key << endl;
+        // cout << "index: " << index << endl;
+        // cout << endl;
         if (table[index] != -100 && table[index] != -1)
         {
             ++b;
