@@ -1,4 +1,4 @@
-﻿# DS-CPlusPlus
+﻿# Data Structures and Algorithms - C++
  
 ## Algorithms
 * Array
